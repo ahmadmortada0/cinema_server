@@ -2,10 +2,11 @@
 require("../connection/connection.php");
 
 
-$query = "CREATE TABLE movies(
+$query = "CREATE TABLE seats(
           id INT(11) AUTO_INCREMENT PRIMARY KEY, 
-          title VARCHAR(255) NOT NULL, 
-          description VARCHAR(255) NOT NULL, )";
+          row INT(11) NOT NULL, 
+          )";
+         
 
 $execute = $mysqli->prepare($query);
 $execute->execute();
