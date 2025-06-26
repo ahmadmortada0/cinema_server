@@ -2,11 +2,11 @@
 require("../connection/connection.php");
 
 
-$query = "CREATE TABLE seats(
+$query = "CREATE TABLE orderedsnacks(
           id INT(11) AUTO_INCREMENT PRIMARY KEY, 
-          seat INT(11) NOT NULL, 
-          showtimesId INT(11) NOT NULL,
-          FOREIGN KEY (showtimesId) REFERENCES showtimes(id)
+          seatsId INT(11) NOT NULL,
+          FOREIGN KEY (seatsId) REFERENCES seats(id)
+          
           )";
          
 
