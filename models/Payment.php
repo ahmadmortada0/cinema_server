@@ -27,15 +27,15 @@ class Payment extends Model {
         return $this->userId;
     }
 
-    public function setTypename(string $typename): string {
+    public function setTypename(string $typename){
         $this->typename = $typename;
     }
 
-    public function setUserId(int $userId): int {
+    public function setUserId(int $userId){
         $this->userId = $userId;
     }
 
     public function toArray(): array {
-        return ["id" => $this->id,"typename" => $this->typename,"userId" => $this->userId];
+        return [$this->id,$this->typename,$this->userId];
     }
 }
