@@ -38,7 +38,7 @@ class Admin extends Model{
     }
 
     public function toArray(){
-        return [$this->id,  $this->email, $this->password];
-    }
+        return [$this->id, $this->email, $this->password];
+    }///
     
 }
