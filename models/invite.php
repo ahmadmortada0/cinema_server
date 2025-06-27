@@ -7,7 +7,7 @@ class Invite extends Model{
     private int $userId; 
     private int $userinvitedId; 
  
-    protected static string $table = "users";
+    protected static string $table = "invites";
 
     public function __construct(array $data){
         $this->id = $data["id"];
