@@ -1,13 +1,13 @@
 <?php
 require_once("Model.php");
-
-class Ticket extends Model{
+// 
+class Movie extends Model{
 
     private int $id; 
     private string $title; 
     private string $description; 
     
-    protected static string $table = "tickets";
+    protected static string $table = "movies";
 
     public function __construct(array $data){
         $this->id = $data["id"];
@@ -19,19 +19,19 @@ class Ticket extends Model{
         return $this->id;
     }
 
-    public function gettitle(): string {
+    public function getTitle(): string {
         return $this->title;
     }
 
 
-    public function getdescription(): string {
+    public function getDescription(): string {
         return $this->description;
     }
 
-    public function settitle(string $title){
+    public function setTitle(string $title){
     $this->title = $title;
     }
-    public function setdescription(string $description){
+    public function setDescription(string $description){
     $this->description = $description;
     }
     
