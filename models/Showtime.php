@@ -1,52 +1,51 @@
 <?php
 require_once("Model.php");
 
-class User extends Model{
+class Showtime extends Model {
 
-    private int $id; 
-    private string $name; 
-    private string $email; 
-    private string $password; 
-    
-    protected static string $table = "users";
+    private int $id;
+    private string $time;
+    private string $date;
+    private int $moviesId;
 
-    public function __construct(array $data){
+    protected static string $table = "showtimes";
+
+    public function __construct(array $data) {
         $this->id = $data["id"];
-        $this->name = $data["name"];
-        $this->email = $data["email"];
-        $this->password = $data["password"];
+        $this->time = $data["time"];
+        $this->date = $data["date"];
+        $this->moviesId = $data["moviesId"];
     }
 
     public function getId(): int {
         return $this->id;
     }
 
-    public function getName(): string {
-        return $this->name;
+    public function getTime(): string {
+        return $this->time;
     }
 
-    public function getemail(): string {
-        return $this->email;
+    public function getDate(): string {
+        return $this->date;
     }
 
-    public function getpassword(): string {
-        return $this->password;
+    public function getMoviesId(): int {
+        return $this->moviesId;
     }
 
-    public function setName(string $name){
-        $this->name = $name;
+    public function setTime(string $time) {
+        $this->time = $time;
     }
 
-    public function setemail(string $email){
-        $this->email = $email;
+    public function setDate(string $date) {
+        $this->date = $date;
     }
 
-    public function setpassword(string $password){
-        $this->password = $password;
+    public function setMoviesId(int $moviesId) {
+        $this->moviesId = $moviesId;
     }
 
-    public function toArray(){
-        return [$this->id, $this->name, $this->email, $this->password];
+    public function toArray() {
+        return [$this->id, $this->time, $this->date, $this->moviesId];
     }
-    
 }
