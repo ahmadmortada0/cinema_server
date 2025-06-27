@@ -48,5 +48,4 @@ class User extends Model{
     public function toArray(){
         return [$this->id, $this->name, $this->email, $this->password];
     }
-    
 }
