@@ -1,13 +1,12 @@
 <?php
 require_once("Model.php");
 
-class invite extends Model{
+class Invite extends Model{
 
     private int $id; 
     private int $userId; 
     private int $userinvitedId; 
  
-    // sss
     protected static string $table = "users";
 
     public function __construct(array $data){
