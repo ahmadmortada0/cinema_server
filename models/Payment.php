@@ -1,52 +1,41 @@
 <?php
 require_once("Model.php");
 
-class User extends Model{
+class Payment extends Model {
 
-    private int $id; 
-    private string $name; 
-    private string $email; 
-    private string $password; 
-    
-    protected static string $table = "users";
+    private int $id;
+    private string $typename;
+    private int $userId;
 
-    public function __construct(array $data){
+    protected static string $table = "payments";
+
+    public function __construct(array $data) {
         $this->id = $data["id"];
-        $this->name = $data["name"];
-        $this->email = $data["email"];
-        $this->password = $data["password"];
+        $this->typename = $data["typename"];
+        $this->userId = $data["userId"];
     }
 
     public function getId(): int {
         return $this->id;
     }
 
-    public function getName(): string {
-        return $this->name;
+    public function getTypename(): string {
+        return $this->typename;
     }
 
-    public function getemail(): string {
-        return $this->email;
+    public function getUserId(): int {
+        return $this->userId;
     }
 
-    public function getpassword(): string {
-        return $this->password;
+    public function setTypename(string $typename): void {
+        $this->typename = $typename;
     }
 
-    public function setName(string $name){
-        $this->name = $name;
+    public function setUserId(int $userId): void {
+        $this->userId = $userId;
     }
 
-    public function setemail(string $email){
-        $this->email = $email;
+    public function toArray(): array {
+        return ["id" => $this->id,"typename" => $this->typename,"userId" => $this->userId];
     }
-
-    public function setpassword(string $password){
-        $this->password = $password;
-    }
-
-    public function toArray(){
-        return [$this->id, $this->name, $this->email, $this->password];
-    }
-    
 }
