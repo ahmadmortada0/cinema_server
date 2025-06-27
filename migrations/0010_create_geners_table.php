@@ -2,12 +2,11 @@
 require("../connection/connection.php");
 
 
-$query = "CREATE TABLE snacks(
+$query = "CREATE TABLE genres(
           id INT(11) AUTO_INCREMENT PRIMARY KEY, 
-          name VARCHAR(255) NOT NULL, 
-          price int(11) NOT NULL
+          genretype VARCHAR(255) NOT NULL, 
+          FOREIGN KEY (userId) REFERENCES users(id)
           )";
-         
 
 $execute = $mysqli->prepare($query);
 $execute->execute();
