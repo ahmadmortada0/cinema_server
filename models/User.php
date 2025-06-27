@@ -25,11 +25,11 @@ class User extends Model{
         return $this->name;
     }
 
-    public function getemail(): string {
+    public function getEmail(): string {
         return $this->email;
     }
 
-    public function getpassword(): string {
+    public function getPassword(): string {
         return $this->password;
     }
 
@@ -37,11 +37,11 @@ class User extends Model{
         $this->name = $name;
     }
 
-    public function setemail(string $email){
+    public function setEmail(string $email){
         $this->email = $email;
     }
 
-    public function setpassword(string $password){
+    public function setPassword(string $password){
         $this->password = $password;
     }
 
@@ -50,8 +50,3 @@ class User extends Model{
     }
     
 }
-$result = $mysqli->query("SELECT img FROM usersInfos WHERE id = 1");
-$row = $result->fetch_assoc();
-$imgPath = $row['img'];
-
-echo "<img src='$imgPath' alt='User Image' width='200'>";
