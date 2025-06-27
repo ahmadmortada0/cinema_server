@@ -1,52 +1,42 @@
 <?php
 require_once("Model.php");
 
-class User extends Model{
+class Seat extends Model {
 
-    private int $id; 
-    private string $name; 
-    private string $email; 
-    private string $password; 
-    
-    protected static string $table = "users";
+    private int $id;
+    private int $seat;
+    private int $showtimesId;
 
-    public function __construct(array $data){
+    protected static string $table = "seats";
+
+    public function __construct(array $data) {
         $this->id = $data["id"];
-        $this->name = $data["name"];
-        $this->email = $data["email"];
-        $this->password = $data["password"];
+        $this->seat = $data["seat"];
+        $this->showtimesId = $data["showtimesId"];
     }
 
     public function getId(): int {
         return $this->id;
     }
 
-    public function getName(): string {
-        return $this->name;
+    public function getSeat(): int {
+        return $this->seat;
     }
 
-    public function getemail(): string {
-        return $this->email;
+    public function getShowtimesId(): int {
+        return $this->showtimesId;
     }
 
-    public function getpassword(): string {
-        return $this->password;
+    public function setSeat(int $seat){
+        $this->seat = $seat;
     }
 
-    public function setName(string $name){
-        $this->name = $name;
+    public function setShowtimesId(int $showtimesId){
+        $this->showtimesId = $showtimesId;
     }
 
-    public function setemail(string $email){
-        $this->email = $email;
+    public function toArray(): array {
+        return [$this->id, $this->seat,$this->showtimesId ];
     }
-
-    public function setpassword(string $password){
-        $this->password = $password;
-    }
-
-    public function toArray(){
-        return [$this->id, $this->name, $this->email, $this->password];
-    }
-    
 }
+
