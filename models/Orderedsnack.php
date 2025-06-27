@@ -26,6 +26,6 @@ class OrderedSnack extends Model {
     }
 
     public function toArray(): array {
-        return ["id" => $this->id,"seatsId" => $this->seatsId];
+        return [$this->id, $this->seatsId];
     }
 }
