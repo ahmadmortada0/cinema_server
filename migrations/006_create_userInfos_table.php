@@ -2,11 +2,11 @@
 require("../connection/connection.php");
 
 
-$query = "CREATE TABLE usersInfos(
+$query = "CREATE TABLE usersinfos(
           id INT(11) AUTO_INCREMENT PRIMARY KEY, 
-          img VARCHAR(255) NOT NULL, 
+          img text NOT NULL, 
           age VARCHAR(255) NOT NULL, 
-          usersId INT(11) NOT NULL,
+          userId INT(11) NOT NULL,
           FOREIGN KEY (userId) REFERENCES users(id)
           )";
 

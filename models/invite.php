@@ -7,7 +7,7 @@ class invite extends Model{
     private int $userId; 
     private int $userinvitedId; 
  
-    
+    // sss
     protected static string $table = "users";
 
     public function __construct(array $data){
@@ -41,5 +41,5 @@ class invite extends Model{
     public function toArray(){
         return [$this->id, $this->userId, $this->getUserinvitedId];
     }
-    
+   //
 }
