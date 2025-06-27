@@ -1,52 +1,45 @@
 <?php
 require_once("Model.php");
 
-class User extends Model{
+class Notfication extends Model{
 
-    private int $id; 
-    private string $name; 
-    private string $email; 
-    private string $password; 
+    private int $id;     
+    private string $mess; 
+    private int $userId; 
+   
     
-    protected static string $table = "users";
+    protected static string $table = "notfications";
 
     public function __construct(array $data){
         $this->id = $data["id"];
-        $this->name = $data["name"];
-        $this->email = $data["email"];
-        $this->password = $data["password"];
+        $this->mess = $data["mess"];
+        $this->userId = $data["userId"];
     }
 
     public function getId(): int {
         return $this->id;
     }
 
-    public function getName(): string {
-        return $this->name;
+    public function getMess(): string {
+        return $this->mess;
     }
 
-    public function getemail(): string {
-        return $this->email;
+    public function getUserId(): int {
+        return $this->userId;
     }
 
-    public function getpassword(): string {
-        return $this->password;
+
+    public function setmess(string $mess){
+        $this->mess = $mess;
     }
 
-    public function setName(string $name){
-        $this->name = $name;
+    public function setUserId(int $userId){
+        $this->userId = $userId;
     }
 
-    public function setemail(string $email){
-        $this->email = $email;
-    }
-
-    public function setpassword(string $password){
-        $this->password = $password;
-    }
 
     public function toArray(){
-        return [$this->id, $this->name, $this->email, $this->password];
+        return [$this->id, $this->mess, $this->userid];
     }
     
 }
