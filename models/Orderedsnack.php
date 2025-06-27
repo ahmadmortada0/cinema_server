@@ -21,7 +21,7 @@ class OrderedSnack extends Model {
         return $this->seatsId;
     }
 
-    public function setSeatsId(int $seatsId): void {
+    public function setSeatsId(int $seatsId){
         $this->seatsId = $seatsId;
     }
 
