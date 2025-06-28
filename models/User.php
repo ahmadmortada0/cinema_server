@@ -3,7 +3,7 @@ require_once("Model.php");
 
 class User extends Model{
 
-    private int $id; 
+    private ?int $id=null; 
     private string $name; 
     private string $email; 
     private string $password; 
@@ -11,13 +11,15 @@ class User extends Model{
     protected static string $table = "users";
 
     public function __construct(array $data){
-        $this->id = $data["id"];
+               if (isset($data["id"])) {
+            $this->id = $data["id"];
+        }
         $this->name = $data["name"];
         $this->email = $data["email"];
         $this->password = $data["password"];
     }
 
-    public function getId(): int {
+    public function getId(): ?int {
         return $this->id;
     }
 
@@ -45,7 +47,12 @@ class User extends Model{
         $this->password = $password;
     }
 
-    public function toArray(){
-        return [$this->id, $this->name, $this->email, $this->password];
-    }
+  public function toArray() {
+    return [
+        "id" => $this->id,
+        "name" => $this->name,
+        "email" => $this->email,
+        "password" => $this->password
+    ];
+}
 }

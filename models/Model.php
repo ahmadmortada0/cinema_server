@@ -33,49 +33,28 @@ abstract class Model{
 
         return $objects; //we are returning an array of objects!!!!!!!!
     }
+       public static function findbyemail( $mysqli,string $email){
+        $query = $mysqli->prepare("Select * from users WHERE email = ?");
+        $query->bind_param("s", $email);
+        $query->execute();
+        $data = $query->get_result()->fetch_assoc();
+        return $data ? new static($data) : null;
+    }
    public static function add(mysqli $mysqli, array $columns, array $values): bool {
-       // Return early if columns and values don't match
-    if (count($columns) !== count($values) || empty($columns)) {
-        return false;
-    }
 
-    // Wrap column names in backticks (`name`, `email`, etc.)
     $escapedColumns = array_map(fn($col) => "`$col`", $columns);
     $columnsStr = implode(", ", $escapedColumns);
 
-    // Create ?, ?, ? placeholders
     $placeholders = implode(", ", array_fill(0, count($values), "?"));
 
-    // Final SQL query
     $sql = sprintf("INSERT INTO `%s` (%s) VALUES (%s)", static::$table, $columnsStr, $placeholders);
 
     $stmt = $mysqli->prepare($sql);
-    if (!$stmt) return false;
-
-    // Assume all values are strings — if not, adjust this line
-    // Return early if columns and values don't match
-    if (count($columns) !== count($values) || empty($columns)) {
-        return false;
-    }
-
-    // Wrap column names in backticks (`name`, `email`, etc.)
-    $escapedColumns = array_map(fn($col) => "`$col`", $columns);
-    $columnsStr = implode(", ", $escapedColumns);
-
-    // Create ?, ?, ? placeholders
-    $placeholders = implode(", ", array_fill(0, count($values), "?"));
-
-    // Final SQL query
-    $sql = sprintf("INSERT INTO `%s` (%s) VALUES (%s)", static::$table, $columnsStr, $placeholders);
-
-    $stmt = $mysqli->prepare($sql);
-    if (!$stmt) return false;
-
-    // Assume all values are strings — if not, adjust this line
-    $types = str_repeat("s", count($values));
+    $types = str_repeat('s', count($values)); 
     $stmt->bind_param($types, ...$values);
-
+    if (!$stmt) return false;
     return $stmt->execute();
+
 }
 
 

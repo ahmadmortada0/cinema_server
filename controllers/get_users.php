@@ -1,4 +1,8 @@
-<?php 
+<?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 require("../models/User.php");
 require("../connection/connection.php");
 
@@ -6,13 +10,13 @@ $response = [];
 $response["status"] = 200;
 
 if(!isset($_GET["id"])){
-    $user = User::all($mysqli); //reminder: this is an array of OBJECTS!!!!
+    $user = User::all($mysqli); 
 
-    $response["user"] = []; //json_encode DOES NOT read private attributes!!!
+    $response["user"] = []; 
     foreach($user as $a){
-        $response["user"][] = $a->toArray(); //hence, we decided to iterate again on the user array and now to store the result of the toArray() which is an array. 
+        $response["user"][] = $a->toArray(); 
     }
-    echo json_encode($response); //now we can call json_encode on array of arrays. 
+    echo json_encode($response); 
     return;
 }
 
@@ -22,3 +26,4 @@ $response["user"] = $user->toArray();
 
 echo json_encode($response);
 return;
+//worked
