@@ -1,17 +1,30 @@
 <?php 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 require("../models/Movie.php");
 require("../connection/connection.php");
 
 $response = [];
 $response["status"] = 200;
-echo("hey");
+$data = json_decode(file_get_contents("php://input"), true);
+$movie = new Movie([
+   
+     "title" => $data["title"],
+    "description" => $data["description"],
+    "image" => $data["image"],
+   "trailer"=>$data["trailer"]
+]);
 
-    $title = $_GET["title"];
-    $description = $_GET["description"];
-    $columns = ["title", "description"];
-    $values = [$title, $description];
-    echo ("vahello");//reminder: this is an array of OBJECTS!!!!
-    $user = Movie::add($mysqli,$columns,$values); 
-    // json_encode($values);
-    // echo ($columns);//reminder: this is an array of OBJECTS!!!!
-    
+
+
+    // $columns = ["title", "description", "image","trailer"];
+    // $values = [$movie->getTitle(), $movie->getDescription(), $movie->getImage(),$movie->getTrailer()];
+    echo ("vahello");
+
+    $movie->insertMovie($mysqli); 
+    if(!$movie){
+        $response["status"] = 404;
+    }
+//worked

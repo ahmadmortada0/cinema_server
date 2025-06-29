@@ -54,7 +54,6 @@ abstract class Model{
     $stmt->bind_param($types, ...$values);
     if (!$stmt) return false;
     return $stmt->execute();
-
 }
 
 

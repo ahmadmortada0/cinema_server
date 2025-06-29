@@ -1,4 +1,8 @@
 <?php 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 require("../models/Movie.php");
 require("../connection/connection.php");
 
@@ -10,7 +14,7 @@ if(!isset($_GET["id"])){
 
     $response["movie"] = []; 
     foreach($movie as $m){
-        $response["movie"][] = $m->toArray(); 
+        $response["movie"][] = $m->toArrayjson(); 
     }
     echo json_encode($response); 
     return;
@@ -18,7 +22,7 @@ if(!isset($_GET["id"])){
 
 $id = $_GET["id"];
 $movie = Movie::find($mysqli, $id);
-$response["movie"] = $movie->toArray();
+$response["movie"] = $movie->toArrayjson();
 
 echo json_encode($response);
 return;
