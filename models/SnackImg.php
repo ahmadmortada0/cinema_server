@@ -4,16 +4,20 @@ require_once("Model.php");
 class SnackImg extends Model {
 
     private int $id;
-    private string $name;
-    private int $price;
+    private int $snackId;
+    private string $image;
 
 
     protected static string $table = "snacks_images";
 
     public function __construct(array $data) {
+        if(isset($this->id)){
         $this->id = $data["id"];
-        $this->name = $data["name"];
-        $this->price = $data["price"];
+    }
+    $this->snackId = $data["snackId"];
+    $this->image = $data["image"];
+
+
 
     }
 
@@ -21,35 +25,36 @@ class SnackImg extends Model {
         return $this->id;
     }
 
-    public function getName(): string {
-        return $this->name;
+    public function getImage(): string {
+        return $this->Image;
     }
 
-    public function getPrice(): int {
-        return $this->price;
+    public function getsnackID(): int {
+        return $this->snackID;
     }
 
-    public function setName(string $name) {
-        $this->name = $name;
+    public function setImage(string $image) {
+        $this->image = $image;
     }
 
-    public function setPrice(int $price) {
-        $this->price = $price;
+    public function setSnackID(int $snackID) {
+        $this->snackID = $snackID;
     }
     
-   public function getImg(mysqli $mysqli,int $snackId): bool {
+   public function getImg(mysqli $mysqli,int $snackId) {
 
-    $stmt  = $mysqli->prepare("SELECT * FROM `snacks_images` WHERE snacksId= $snackId");
-      $query = $mysqli->prepare($stmt);
+    $query = $mysqli->prepare("SELECT * FROM `snacks_images` WHERE snacksId= $snackId");
         $query->bind_param("i", $id);
         $query->execute();
 }
 
-    public function toArray() {
+    public function toArrayJson() {
         return [
-            $this->id,
-            $this->name,
-            $this->price,
+
+          "id" => $this->id,
+           "image" => $this->image,
+           "snackId"=> $this->snackID,
+        
         ];
     }
 }

@@ -1,18 +1,16 @@
 <?php 
 require("../models/snack.php");
 require("../connection/connection.php");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-
+require("./header.php");
 $response = [];
 $response["status"] = 200;
 
 
 
-$id = $_GET["id"];
-$snack = Snack::find($mysqli, $id);
-$response["snack"] = $snack->toArray();
+$id = $_GET["snacksId"];
+$snack = Snack::find($mysqli, $idID);
 
+if($response){
+$response["snacks"] = $snack->toArray();
 echo json_encode($response);
-return;
+return;}

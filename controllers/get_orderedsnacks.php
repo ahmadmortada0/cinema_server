@@ -1,4 +1,6 @@
 <?php 
+require("./header.php");
+
 require("../models/Orderedsnack.php");
 require("../connection/connection.php");
 

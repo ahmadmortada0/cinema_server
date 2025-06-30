@@ -1,4 +1,5 @@
 <?php 
+require("./header.php");
 require("../models/Payment.php");
 require("../connection/connection.php");
 

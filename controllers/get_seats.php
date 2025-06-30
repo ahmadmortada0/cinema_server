@@ -1,4 +1,6 @@
 <?php 
+require("./header.php");
+
 require("../models/Seat.php");
 require("../connection/connection.php");
 
