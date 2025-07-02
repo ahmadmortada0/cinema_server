@@ -40,6 +40,7 @@ abstract class Model{
         $data = $query->get_result()->fetch_assoc();
         return $data ? new static($data) : null;
     }
+     
    public static function add(mysqli $mysqli, array $columns, array $values): bool {
 
     $escapedColumns = array_map(fn($col) => "`$col`", $columns);

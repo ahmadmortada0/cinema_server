@@ -1,7 +1,7 @@
 <?php 
 require("./header.php");
 require("../connection/connection.php");
-require("./controllers/header.php");
+require("../models/snack.php");
 
 
 $response = [];
