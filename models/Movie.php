@@ -3,7 +3,7 @@ require_once("Model.php");
 // 
 class Movie extends Model{
 
-    private ?int $id=null; 
+    private int $id; 
     private string $title; 
     private string $description; 
     private string $image; 
@@ -12,9 +12,7 @@ class Movie extends Model{
     protected static string $table = "movies";
 
     public function __construct(array $data){
-       if (isset($data["id"])) {
-            $this->id = $data["id"];
-        }
+        $this->id = $data["id"];
         $this->title = $data["title"];
         $this->description = $data["description"];
         $this->image = $data["image"];
@@ -67,7 +65,7 @@ function insertMovie($mysqli) {
     echo "Inserted: $this->title\n";
 }
     public function toArray(){
-        return [$this->id, $this->title,  $this->description,$this->image,$this->trailer];
+        return [$this->id, $this->title,  $this->description, base64_encode($this->image),$this->trailer];
     }
     public function toArrayJson(){
         return [  

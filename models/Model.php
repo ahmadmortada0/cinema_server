@@ -56,7 +56,28 @@ abstract class Model{
     if (!$stmt) return false;
     return $stmt->execute();
 }
+    public static function deleteAllArticles(mysqli $mysqli){
+        $sql =sprintf("DELETE  FROM %s",static::$table);
+        $query=$mysqli->prepare($sql);
+        $query->execute();
+        if($query){
+            return "deleted";
+        }
+        return "the data is already empty";
+    }
+    public static function delete(mysqli $mysqli,int $id){
+        $found=static::find($mysqli,$id);
+        if ($found!==null){
+        $sql =sprintf("DELETE  FROM %s where id = ?",static ::$table);
+        $query=$mysqli->prepare($sql);
+        $query->bind_Param("i",$id);
+        echo ($id);
+        $query->execute();
+            return " deleted";
+        }
+        return " not found";
 
+    }
 
 
 

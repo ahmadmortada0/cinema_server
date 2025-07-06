@@ -3,7 +3,7 @@ require_once("Model.php");
 
 class User extends Model{
 
-    private ?int $id=null; 
+    private int $id; 
     private string $name; 
     private string $email; 
     private string $password; 
@@ -11,9 +11,7 @@ class User extends Model{
     protected static string $table = "users";
 
     public function __construct(array $data){
-               if (isset($data["id"])) {
-            $this->id = $data["id"];
-        }
+        $this->id = $data["id"];
         $this->name = $data["name"];
         $this->email = $data["email"];
         $this->password = $data["password"];

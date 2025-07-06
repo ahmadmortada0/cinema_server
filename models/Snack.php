@@ -3,16 +3,14 @@ require_once("Model.php");
 
 class Snack extends Model {
 
-    private ?int $id = null;
+    private int $id;
     private string $name;
     private int $price;
 
     protected static string $table = "snacks";
 
     public function __construct(array $data) {
-        if (isset($data["id"])) {
-            $this->id = $data["id"];
-        }
+        $this->id = $data["id"];
         $this->name = $data["name"];
         $this->price = $data["price"];
     }
@@ -49,5 +47,13 @@ class Snack extends Model {
     public function toArray() {
         return [$this->id, $this->name, $this->price];
     }
+      public  function insertArticle(mysqli $mysqli,string $name , string $author ,string $description ){
+        $sql ="INSERT INTO articles  (name,author,description) Values (?,?,?); ";
+        $query=$mysqli->prepare($sql);
+        $query->bind_param("sss",$name,$author,$description);
+        $query->execute();
+        return "USERE Inserted";
+    }    
+    
 }
 

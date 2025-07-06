@@ -80,6 +80,6 @@ function insertSnackImage($mysqli) {
 
 
      public function toArray() {
-        return [$this->id,  $this->snacksId,$this->image];
+        return [$this->id, $this->snacksId, base64_encode($this->image)];
     }
 }
